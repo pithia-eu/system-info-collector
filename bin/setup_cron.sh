@@ -78,7 +78,7 @@ fi
 # Check for existing cron job
 echo "Checking if the  cron job exist"
 croncmd="$SCRIPT_PATH >> $LOGFILE_PATH 2>&1"
-cronjob="0 0 * * * $croncmd"
+cronjob="0 12 */3 * * $croncmd"
 if ! (crontab -l 2>/dev/null | grep -Fq "$croncmd"); then
   echo "Adding cron job"
   if ! (crontab -l 2>/dev/null ; echo "$cronjob") | crontab -; then
