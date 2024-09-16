@@ -52,7 +52,7 @@ def _create_file_handler(_logger,
         try:
             os.makedirs(directory)
             _logger.info('Directory created')
-        except OSError as e:
+        except OSError:
             _logger.exception("Failed to create log directory",
                               exc_info=True)
             _logger.info(f"Program exits with error")
