@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from source.log.logger import logger
 from source.utils.arguments import process_args
 from source.collect.collect import collect_info
+from source.collect.csv import create_csv_report
 
 
 def main():
@@ -18,7 +19,9 @@ def main():
     load_dotenv()
     collected_info =collect_info(timestamp,
                                  test)
-    print(collected_info)
+    create_csv_report(timestamp,
+                      collected_info,
+                      test)
     if args.test:
         logger.warning("Test run completed. No info created")
     else:
