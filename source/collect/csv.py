@@ -22,9 +22,7 @@ def create_csv_report(timestamp,
             collected.append(system_results)
     collected_df = pandas.DataFrame(collected)
     errors_df = pandas.DataFrame(errors)
-    report_path = get_env_variable("REPORT_PATH")
-    reports_csv_path = os.path.join(report_path,
-                                    "system-info-collector")
+    reports_csv_path = get_env_variable("REPORT_PATH")
     create_local_directory(reports_csv_path)
     change_local_directory_permission(reports_csv_path)
     if test:
