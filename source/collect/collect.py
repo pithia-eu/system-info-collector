@@ -2,62 +2,6 @@ import scp
 from source.log.logger import logger
 from source.utils.environment import get_env_variable
 from source.utils.ssh import create_ssh_client
-from source.utils.directory import create_local_directory
-from source.utils.permissions import change_local_directory_permission
-
-BACKUP_FILE_PATTERN_ALL = "{backup_ssh_path}/{backup_dbname}_all_system_dbs_{timestamp}.{ext}"
-BACKUP_FILE_PATTERN_DB = "{backup_ssh_path}/{backup_dbname}_db_{timestamp}.{ext}"
-
-
-def generate_backup_file_paths(timestamp,
-                               backup_dbname,
-                               backup_ssh_path):
-    return [
-        BACKUP_FILE_PATTERN_ALL.format(backup_ssh_path=backup_ssh_path,
-                                       backup_dbname=backup_dbname,
-                                       timestamp=timestamp,
-                                       ext="sql"),
-        BACKUP_FILE_PATTERN_DB.format(backup_ssh_path=backup_ssh_path,
-                                      backup_dbname=backup_dbname,
-                                      timestamp=timestamp,
-                                      ext="sql"),
-        BACKUP_FILE_PATTERN_DB.format(backup_ssh_path=backup_ssh_path,
-                                      backup_dbname=backup_dbname,
-                                      timestamp=timestamp,
-                                      ext="tar")
-    ]
-
-
-def generate_backup_command(backup_postgres_user,
-                            backup_command,
-                            backup_ssh_path):
-    return f'sudo su {backup_postgres_user} -c "{backup_command} {backup_ssh_path}"'
-
-
-def generate_backup_commands(timestamp,
-                             backup_postgres_user,
-                             backup_dbname,
-                             backup_ssh_path):
-    backup_files = generate_backup_file_paths(timestamp,
-                                              backup_dbname,
-                                              backup_ssh_path)
-    backup_commands = {
-        "dumpall": f"pg_dumpall -U {backup_postgres_user} -f",
-        "dump": f"pg_dump -d {backup_dbname} -f",
-        "dump_tar": f"pg_dump -d {backup_dbname} -F tar -f"
-    }
-
-    return [
-        generate_backup_command(backup_postgres_user,
-                                backup_commands['dumpall'],
-                                backup_files[0]),
-        generate_backup_command(backup_postgres_user,
-                                backup_commands['dump'],
-                                backup_files[1]),
-        generate_backup_command(backup_postgres_user,
-                                backup_commands['dump_tar'],
-                                backup_files[2])
-    ]
 
 
 def is_true(env_variable):
