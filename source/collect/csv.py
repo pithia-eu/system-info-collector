@@ -10,12 +10,9 @@ from source.log.logger import logger
 def create_csv_report(timestamp,
                       collected_info,
                       test):
-    print(timestamp)
     collected = []
     errors = []
     for system, results in collected_info.items():
-        print(system)
-        print(results)
         system_results = {"system": system}
         for result_key, results_value in results.items():
             system_results[result_key] = results_value
@@ -26,7 +23,6 @@ def create_csv_report(timestamp,
     collected_df = pandas.DataFrame(collected)
     errors_df = pandas.DataFrame(errors)
     report_path = get_env_variable("REPORT_PATH")
-    print(report_path)
     reports_csv_path = os.path.join(report_path,
                                     "system-info-collector")
     create_local_directory(reports_csv_path)
@@ -41,8 +37,6 @@ def create_csv_report(timestamp,
                                           f"system-info-collector-{timestamp}_collected.csv")
         errors_csv_path = os.path.join(reports_csv_path,
                                        f"system-info-collector-{timestamp}_errors.csv")
-    print(collected_csv_path)
-    print(errors_csv_path)
     collected_df.to_csv(collected_csv_path, index=False)
     errors_df.to_csv(errors_csv_path, index=False)
     logger.info(f"CSV reports created, path: {reports_csv_path}")
