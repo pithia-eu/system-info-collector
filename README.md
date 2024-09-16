@@ -1,6 +1,6 @@
 # system-info-collector
 
-## Collect from various hosts information and create a csv file with all details
+## Collect system information from various hosts and create a csv file with all details
 
 ## Introduction
 
