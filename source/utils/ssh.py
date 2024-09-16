@@ -48,5 +48,5 @@ def ssh_command(ssh_client,
         raise Exception(f'{error_msg}: {ssh_stderr.read()}')
     else:
         result = ssh_stdout.read().decode('utf-8')
-        logger.info(f'{info_msg}: {result}')
+        logger.debug(f'{info_msg}: {result}')
         return result
