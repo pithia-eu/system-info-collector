@@ -7,7 +7,8 @@ from source.utils.permissions import change_local_directory_permission
 from source.log.logger import logger
 
 
-def create_csv_report(timestamp, collected_info,
+def create_csv_report(timestamp,
+                      collected_info,
                       test):
     print(timestamp)
     collected = []
@@ -26,15 +27,20 @@ def create_csv_report(timestamp, collected_info,
     errors_df = pandas.DataFrame(errors)
     report_path = get_env_variable("REPORT_PATH")
     print(report_path)
-    reports_csv_path = os.path.join(report_path, "system-info-collector")
+    reports_csv_path = os.path.join(report_path,
+                                    "system-info-collector")
     create_local_directory(reports_csv_path)
     change_local_directory_permission(reports_csv_path)
     if test:
-        collected_csv_path = os.path.join(reports_csv_path, f"system-info-collector-{timestamp}_collected_test.csv")
-        errors_csv_path = os.path.join(reports_csv_path, f"system-info-collector-{timestamp}_errors_test.csv")
+        collected_csv_path = os.path.join(reports_csv_path,
+                                          f"system-info-collector-{timestamp}_collected_test.csv")
+        errors_csv_path = os.path.join(reports_csv_path,
+                                       f"system-info-collector-{timestamp}_errors_test.csv")
     else:
-        collected_csv_path = os.path.join(reports_csv_path, f"system-info-collector-{timestamp}_collected.csv")
-        errors_csv_path = os.path.join(reports_csv_path, f"system-info-collector-{timestamp}_errors.csv")
+        collected_csv_path = os.path.join(reports_csv_path,
+                                          f"system-info-collector-{timestamp}_collected.csv")
+        errors_csv_path = os.path.join(reports_csv_path,
+                                       f"system-info-collector-{timestamp}_errors.csv")
     print(collected_csv_path)
     print(errors_csv_path)
     collected_df.to_csv(collected_csv_path, index=False)
