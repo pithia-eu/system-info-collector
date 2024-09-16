@@ -1,3 +1,2 @@
 paramiko==3.4.1
-scp==0.15.0
 python-dotenv==1.0.1
