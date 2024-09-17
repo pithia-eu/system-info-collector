@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Required to set permissions on this hosts
-sudo apt install acl
-
 # install if not present
 sudo apt install python3-venv
 
