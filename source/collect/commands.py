@@ -208,7 +208,7 @@ def collect_updates(host_ssh_client,
     logger.debug('Collecting Updates..')
     if test:
         return "test_updates"
-    command = "sudo apt-get update && apt list --upgradable"
+    command = "apt list --upgradable"
     ssh_command_out = ssh_command(host_ssh_client,
                                   command,
                                   "Error while collecting available updates",
