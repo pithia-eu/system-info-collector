@@ -17,8 +17,20 @@ To configure this system to ssh to other hosts, you must define several environm
 - `SSH_USER`: SSH username.
 - `SSH_HOSTS`: A comma-separated list with hostnames or IP addresses.
 - `COLLECT_HOSTNAME`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_UPTIME`: Set to `True` to collect. Otherwise, set to `False`.
 - `COLLECT_DATE`: Set to `True` to collect. Otherwise, set to `False`.
-- `COLLECT_DISKS`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_OS`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_KERNEL`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_OS_DISK`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_IP`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_FIREWALL`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_PORTS`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_USERS`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_GROUPS`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_SERVICES`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_PROCESSES`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_SCHEDULED_TASKS`: Set to `True` to collect. Otherwise, set to `False`.
+- `COLLECT_PACKAGES`: Set to `True` to collect. Otherwise, set to `False`.
 - `COLLECT_UPDATES`: Set to `True` to collect. Otherwise, set to `False`.
 - `REPORT_PATH`: The local host's path where the report will be stored.
 
