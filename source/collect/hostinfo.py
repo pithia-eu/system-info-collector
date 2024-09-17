@@ -1,4 +1,3 @@
-from source.collect.collect import is_true
 from source.collect.commands import (collect_hostname,
                                      collect_uptime,
                                      collect_date,
@@ -68,3 +67,10 @@ def get_items_to_collect():
                              {"updates": {"enabled": collect_updates_bool,
                                           "function": collect_updates}}]
     return items_to_collect_list
+
+
+def is_true(env_variable):
+    if env_variable.upper() == 'TRUE':
+        return True
+    else:
+        return False
