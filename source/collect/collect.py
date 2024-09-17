@@ -4,13 +4,6 @@ from source.utils.environment import get_env_variable
 from source.utils.ssh import create_ssh_client
 
 
-def is_true(env_variable):
-    if env_variable.upper() == 'TRUE':
-        return True
-    else:
-        return False
-
-
 def collect_info(timestamp,
                  test=False):
     logger.info('Collecting System info from Remote Hosts..')
