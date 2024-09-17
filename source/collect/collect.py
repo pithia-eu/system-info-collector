@@ -49,5 +49,3 @@ def collect_info(timestamp,
         host_ssh_client.close()
     logger.info('Collecting System info from Remote Completed')
     return collected_info_dict
-
-
