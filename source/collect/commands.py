@@ -12,7 +12,7 @@ def collect_hostname(host_ssh_client,
                                   command,
                                   "Error while collecting hostname",
                                   "Hostname collected")
-    return ssh_command_out.strip()
+    return ssh_command_out
 
 
 def collect_uptime(host_ssh_client,
@@ -25,7 +25,7 @@ def collect_uptime(host_ssh_client,
                                   command,
                                   "Error while collecting uptime",
                                   "Uptime collected")
-    return ssh_command_out.strip()
+    return ssh_command_out
 
 
 def collect_date(host_ssh_client,
@@ -38,7 +38,7 @@ def collect_date(host_ssh_client,
                                   command,
                                   "Error while collecting date",
                                   "Date collected")
-    return ssh_command_out.strip()
+    return ssh_command_out
 
 
 def collect_os(host_ssh_client,
@@ -64,7 +64,7 @@ def collect_kernel(host_ssh_client,
                                   command,
                                   "Error while collecting OS kernel version",
                                   "OS kernel version collected")
-    return ssh_command_out.strip()
+    return ssh_command_out
 
 
 def collect_os_disk(host_ssh_client,
@@ -77,12 +77,13 @@ def collect_os_disk(host_ssh_client,
                                   command,
                                   "Error while collecting OS disk space",
                                   "OS disk space collected")
-    ssh_command_out_lines = ssh_command_out.splitlines()
-    for line in ssh_command_out_lines:
-        line_list = line.split(" ")
-        processed_line = [item for item in line_list if item != ""]
-        if '/' in processed_line:
-            return " ".join(processed_line)
+    return ssh_command_out
+    # ssh_command_out_lines = ssh_command_out.splitlines()
+    # for line in ssh_command_out_lines:
+    #     line_list = line.split(" ")
+    #     processed_line = [item for item in line_list if item != ""]
+    #     if '/' in processed_line:
+    #         return " ".join(processed_line)
 
 
 def collect_ip(host_ssh_client,
@@ -108,7 +109,7 @@ def collect_firewall(host_ssh_client,
                                   command,
                                   "Error while collecting firewall status",
                                   "Firewall status collected")
-    return ssh_command_out.strip()
+    return ssh_command_out
 
 
 def collect_ports(host_ssh_client,
@@ -121,7 +122,7 @@ def collect_ports(host_ssh_client,
                                   command,
                                   "Error while collecting listening ports",
                                   "Listening ports collected")
-    return ssh_command_out.split("\n")
+    return ssh_command_out
 
 
 def collect_users(host_ssh_client,
@@ -134,7 +135,7 @@ def collect_users(host_ssh_client,
                                   command,
                                   "Error while collecting OS users",
                                   "OS users collected")
-    return ssh_command_out.strip()
+    return ssh_command_out
 
 
 def collect_groups(host_ssh_client,
@@ -147,7 +148,7 @@ def collect_groups(host_ssh_client,
                                   command,
                                   "Error while collecting OS user groups",
                                   "OS user groups collected")
-    return ssh_command_out.strip()
+    return ssh_command_out
 
 
 def collect_services(host_ssh_client,
@@ -160,7 +161,7 @@ def collect_services(host_ssh_client,
                                   command,
                                   "Error while collecting running services",
                                   "Running services collected")
-    return ssh_command_out.split("\n")
+    return ssh_command_out
 
 
 def collect_processes(host_ssh_client,
@@ -173,7 +174,7 @@ def collect_processes(host_ssh_client,
                                   command,
                                   "Error while collecting running processes",
                                   "Running processes collected")
-    return ssh_command_out.split("\n")
+    return ssh_command_out
 
 
 def collect_scheduled_tasks(host_ssh_client,
@@ -186,7 +187,7 @@ def collect_scheduled_tasks(host_ssh_client,
                                   command,
                                   "Error while collecting scheduled tasks",
                                   "Scheduled tasks collected")
-    return ssh_command_out.split("\n")
+    return ssh_command_out
 
 
 def collect_packages(host_ssh_client,
@@ -199,7 +200,7 @@ def collect_packages(host_ssh_client,
                                   command,
                                   "Error while collecting installed packages",
                                   "Installed packages collected")
-    return ssh_command_out.split("\n")
+    return ssh_command_out
 
 
 def collect_updates(host_ssh_client,
@@ -212,4 +213,4 @@ def collect_updates(host_ssh_client,
                                   command,
                                   "Error while collecting available updates",
                                   "Available updates collected")
-    return ssh_command_out.split("\n")
+    return ssh_command_out
