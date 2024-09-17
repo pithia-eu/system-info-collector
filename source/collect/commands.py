@@ -116,7 +116,7 @@ def collect_ports(host_ssh_client,
     logger.debug('Collecting Listening Ports..')
     if test:
         return "test_ports"
-    command = "s -tuln"
+    command = "ss -tuln"
     ssh_command_out = ssh_command(host_ssh_client,
                                   command,
                                   "Error while collecting listening ports",
@@ -155,7 +155,7 @@ def collect_services(host_ssh_client,
     logger.debug('Collecting Running Services..')
     if test:
         return "test_services"
-    command = "systemctl list-units --type=service --state=runnin"
+    command = "systemctl list-units --type=service --state=running"
     ssh_command_out = ssh_command(host_ssh_client,
                                   command,
                                   "Error while collecting running services",
@@ -181,7 +181,7 @@ def collect_scheduled_tasks(host_ssh_client,
     logger.debug('Collecting Scheduled Tasks..')
     if test:
         return "test_scheduled_tasks"
-    command = "crontab -l"
+    command = "cat /etc/crontab"
     ssh_command_out = ssh_command(host_ssh_client,
                                   command,
                                   "Error while collecting scheduled tasks",
@@ -207,7 +207,7 @@ def collect_updates(host_ssh_client,
     logger.debug('Collecting Updates..')
     if test:
         return "test_updates"
-    command = "apt update && apt list --upgradable"
+    command = "sudo apt-get update && apt list --upgradable"
     ssh_command_out = ssh_command(host_ssh_client,
                                   command,
                                   "Error while collecting available updates",
